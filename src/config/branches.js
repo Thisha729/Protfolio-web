@@ -8,7 +8,7 @@ export const branches = [
     branchId: "BR-TRINCO",
     name: "Head Office - Trincomalee",
     city: "Trincomalee",
-    address: "No. 135, Inner Harbour Road, Orr's Hill, Trincomalee",
+    address: "No. 135, 2nd Floor, Inner Harbour Road, Orr's Hill, Trincomalee",
     phone: "",
     phoneDisplay: "",
     email: "trinco@smartpvtltd.com",

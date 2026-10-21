@@ -39,7 +39,7 @@ export const company = {
     whatsapp: "+94770000000",
     whatsappDisplay: "+94 77 000 0000",
     email: "info@smartpvtltd.com",
-    address: "No. 135, Inner Harbour Road, Orr's Hill, Trincomalee, Sri Lanka",
+    address: "No. 135, 2nd Floor, Inner Harbour Road, Orr's Hill, Trincomalee, Sri Lanka",
     country: "Sri Lanka",
     currency: "LKR",
     businessHours: "Mon – Fri: 8:30 AM – 6:00 PM | Sat: 9:00 AM – 1:00 PM",
