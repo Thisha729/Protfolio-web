@@ -20,7 +20,7 @@ export const company = {
     { value: "Multi-Industry", label: "Client Base" },
     { value: "End-to-End", label: "Project Delivery" },
     { value: "Dedicated", label: "Ongoing Support" },
-    { value: "3", label: "Branch Locations" },
+    { value: "2", label: "Branch Locations" },
   ],
 
   trustMetrics: [
@@ -39,7 +39,7 @@ export const company = {
     whatsapp: "+94770000000",
     whatsappDisplay: "+94 77 000 0000",
     email: "info@smartpvtltd.com",
-    address: "No. 123, Main Street, Trincomalee, Sri Lanka",
+    address: "No. 135, Inner Harbour Road, Orr's Hill, Trincomalee, Sri Lanka",
     country: "Sri Lanka",
     currency: "LKR",
     businessHours: "Mon – Fri: 8:30 AM – 6:00 PM | Sat: 9:00 AM – 1:00 PM",
