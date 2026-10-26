@@ -1,73 +1,125 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { insights } from '../config/insights';
 import SEO from '../components/SEO';
-import { ArrowRight, Clock, BookOpen, Calendar } from 'lucide-react';
+import { ArrowRight, Clock, Calendar } from 'lucide-react';
 
 export default function InsightsPage() {
+  const [hovered, setHovered] = useState(null);
+
+  // Unique categories from insights
+  const categories = ['All', ...Array.from(new Set(insights.map(i => i.category)))];
+  const [selectedCat, setSelectedCat] = useState('All');
+
+  const filtered = selectedCat === 'All'
+    ? insights
+    : insights.filter(i => i.category === selectedCat);
+
   return (
-    <div className="pt-28 pb-20 space-y-16">
-      <SEO 
-        title="Insights & Tech Knowledge" 
-        description="Thought leadership, ERP selection guides, website tips, and workflow automation strategies from SMART Pvt Ltd."
+    <div className="bg-white dark:bg-[#06112B] min-h-screen">
+      <SEO
+        title="Insights & Tech Knowledge | SMART [PVT] LTD"
+        description="Practical articles on choosing business systems, automating workflows, and building a high-credibility digital brand."
       />
 
-      {/* Hero Header */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/30 text-primary-cyan text-xs font-bold uppercase tracking-wider mb-4">
-          Knowledge Base
+      {/* ── HERO ──────────────────────────────────────────────────────── */}
+      <section className="relative overflow-hidden pt-32 pb-14 bg-[#EFF6FF] dark:bg-[#0D1F4A] border-b border-[#BFDBFE] dark:border-[#172554]">
+
+        {/* Soft pink glow */}
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_50%_80%,rgba(240,171,252,0.22),transparent_60%)] dark:bg-[radial-gradient(ellipse_at_50%_80%,rgba(192,38,211,0.10),transparent_60%)]" />
+
+        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          {/* Eyebrow pill */}
+          <span className="inline-flex items-center px-4 py-1.5 rounded-full bg-white dark:bg-[#0A1E3F] border border-[#BFDBFE] dark:border-[#1E3A8A] text-xs font-bold uppercase tracking-wider text-[#1D4ED8] dark:text-[#60A5FA] shadow-sm mb-6">
+            Knowledge Base
+          </span>
+
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#0A1E3F] dark:text-white tracking-tight leading-tight">
+            Technology & Business{' '}
+            <span className="text-[#1D4ED8] dark:text-[#60A5FA]">Insights.</span>
+          </h1>
+          <p className="mt-5 text-sm sm:text-base text-[#2D4A8A] dark:text-[#93C5FD] max-w-2xl mx-auto leading-relaxed">
+            Practical articles on choosing business systems, automating workflows, and building a high-credibility digital brand.
+          </p>
+
+          {/* Category filter pills */}
+          <div className="flex flex-wrap justify-center gap-2 mt-8">
+            {categories.map(cat => (
+              <button
+                key={cat}
+                onClick={() => setSelectedCat(cat)}
+                className={`px-4 py-1.5 rounded-full text-xs font-semibold transition-all duration-200 ${
+                  selectedCat === cat
+                    ? 'bg-[#1D4ED8] text-white shadow-md shadow-blue-400/30'
+                    : 'bg-white dark:bg-[#0A1E3F] text-[#2D4A8A] dark:text-[#93C5FD] border border-[#BFDBFE] dark:border-[#1E3A8A] hover:border-[#1D4ED8] hover:text-[#1D4ED8]'
+                }`}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
         </div>
-        <h1 className="text-4xl sm:text-5xl font-extrabold text-[#0A1E3F] dark:text-white tracking-tight max-w-4xl mx-auto">
-          Technology & Business <span className="gradient-text-blue">Insights.</span>
-        </h1>
-        <p className="text-sm sm:text-base text-[#5B6E88] dark:text-text-muted max-w-2xl mx-auto mt-4 leading-relaxed">
-          Practical articles on choosing business systems, automating workflows, and building a high-credibility digital brand.
-        </p>
       </section>
 
-      {/* Articles Grid */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {insights.map((item) => (
-            <div 
+      {/* ── ARTICLES GRID ─────────────────────────────────────────────── */}
+      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {filtered.map((item, idx) => (
+            <div
               key={item.id}
-              className="glass-card rounded-3xl p-6 sm:p-7 glow-on-hover flex flex-col justify-between bg-navy-900/80 border border-surface-border group"
+              onMouseEnter={() => setHovered(item.id)}
+              onMouseLeave={() => setHovered(null)}
+              className="highlight-card group relative bg-white dark:bg-[#0D1F4A] border border-[#BFDBFE] dark:border-[#172554] rounded-2xl p-6 flex flex-col justify-between hover:border-[#1D4ED8] dark:hover:border-[#1D4ED8] hover:shadow-xl hover:shadow-blue-600/10 transition-all duration-300"
+              style={{ animationDelay: `${idx * 60}ms` }}
             >
+              {/* Top: category + read time */}
               <div>
-                <div className="flex items-center justify-between text-xs mb-4">
-                  <span className="font-bold uppercase tracking-wider text-primary dark:text-primary-cyan bg-primary/10 dark:bg-cyan-500/10 px-2.5 py-0.5 rounded-full border border-primary/20 dark:border-cyan-500/20">
+                <div className="flex items-center justify-between mb-4">
+                  <span className="text-[11px] font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-[#EFF6FF] dark:bg-[#0A1E3F] text-[#1D4ED8] dark:text-[#60A5FA] border border-[#BFDBFE] dark:border-[#1E3A8A]">
                     {item.category}
                   </span>
-                  <span className="flex items-center gap-1 text-[13px] text-[#5B6E88] dark:text-text-muted">
-                    <Clock className="w-3 h-3 text-amber-500 dark:text-amber-400" />
+                  <span className="flex items-center gap-1 text-[11px] text-[#2D4A8A] dark:text-[#93C5FD]">
+                    <Clock className="w-3 h-3 text-[#1D4ED8] dark:text-[#60A5FA]" />
                     {item.readTime}
                   </span>
                 </div>
 
-                <h2 className="text-lg font-bold text-[#0A1E3F] dark:text-white group-hover:text-primary dark:group-hover:text-primary-electric transition-colors leading-snug">
+                {/* Title */}
+                <h2 className={`text-base font-extrabold leading-snug transition-colors duration-300 ${
+                  hovered === item.id
+                    ? 'text-[#1D4ED8] dark:text-[#60A5FA]'
+                    : 'text-[#0A1E3F] dark:text-white'
+                }`}>
                   {item.title}
                 </h2>
-                <p className="text-xs text-[#5B6E88] dark:text-text-muted mt-3 leading-relaxed line-clamp-3">
+
+                {/* Summary */}
+                <p className="text-xs text-[#2D4A8A] dark:text-[#93C5FD] mt-3 leading-relaxed line-clamp-3">
                   {item.summary}
                 </p>
               </div>
 
-              <div className="pt-6 mt-4 border-t border-[#DCE6F2] dark:border-surface-border/50 flex items-center justify-between">
-                <span className="text-[13px] text-[#5B6E88] dark:text-text-muted flex items-center gap-1">
+              {/* Bottom: date + read link */}
+              <div className="pt-5 mt-4 border-t border-[#DBEAFE] dark:border-[#172554] flex items-center justify-between">
+                <span className="text-[11px] text-[#3B5FAA] dark:text-[#1E3A8A] flex items-center gap-1">
                   <Calendar className="w-3 h-3" /> {item.date}
                 </span>
                 <Link
                   to={`/insights/${item.slug}`}
-                  className="text-xs font-bold text-primary dark:text-primary-electric group-hover:text-primary-hover dark:group-hover:text-primary-cyan flex items-center gap-1 transition-colors"
+                  className="text-[11px] font-bold text-[#1D4ED8] dark:text-[#60A5FA] flex items-center gap-1 opacity-0 group-hover:opacity-100 translate-x-1 group-hover:translate-x-0 transition-all duration-300"
                 >
-                  Read Article <ArrowRight className="w-3.5 h-3.5" />
+                  Read Article <ArrowRight className="w-3 h-3" />
                 </Link>
               </div>
+
+              {/* Pink left border accent on hover */}
+              <div className={`absolute left-0 top-4 bottom-4 w-0.5 rounded-full bg-[#1D4ED8] transition-all duration-300 ${
+                hovered === item.id ? 'opacity-100' : 'opacity-0'
+              }`} />
             </div>
           ))}
         </div>
       </section>
-
     </div>
   );
 }

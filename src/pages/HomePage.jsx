@@ -145,156 +145,140 @@ export default function HomePage({ onOpenQuote, onOpenClientRequest }) {
       />
 
       {/* =========================================================================
-          1. HERO / BANNER SECTION
+          1. HERO — Pink/Dark Codezela style: watermark + floating logo + pill CTAs
          ========================================================================= */}
-      <section className="relative overflow-hidden border-b border-[#E2EAF4] bg-[#F7FAFE] pt-28 pb-12 font-['Inter'] dark:border-[#1C3A66] dark:bg-[#071B38] lg:pt-32 lg:pb-16">
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_86%_25%,rgba(167,215,255,.62),transparent_30%),radial-gradient(circle_at_8%_88%,rgba(193,224,255,.45),transparent_24%)] dark:bg-[radial-gradient(circle_at_86%_25%,rgba(36,123,230,.28),transparent_30%),radial-gradient(circle_at_8%_88%,rgba(22,91,180,.22),transparent_28%)]" />
-        <div className="pointer-events-none absolute -right-24 top-8 h-80 w-80 rounded-full border-[28px] border-[#D9ECFF]/80 dark:border-[#17477D]/45" />
+      <section className="relative overflow-hidden bg-white dark:bg-[#06112B] pt-24 pb-0 min-h-[92vh] flex flex-col border-b border-[#BFDBFE] dark:border-[#172554]">
 
-        <div className="relative z-10 mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-12 lg:gap-5">
-            <div className="space-y-5 text-left lg:col-span-6 lg:pt-1">
-              
-              {/* Category Pill Tag */}
-              <div className="inline-flex items-center gap-2 rounded-full border border-[#CDE0FF] bg-[#EBF3FC] px-3.5 py-1.5 text-[13px] font-bold uppercase tracking-wider text-[#0066FF] shadow-sm dark:border-[#2C639C] dark:bg-[#0D315B] dark:text-[#65B5FF]">
-                <span>SOFTWARE | ACCOUNTING | AUDIT | BUSINESS SOLUTIONS</span>
-              </div>
+        {/* ── 3D animated SMART watermark ── */}
+        <div
+          className="pointer-events-none select-none absolute inset-0 flex items-center justify-center overflow-hidden"
+          aria-hidden="true"
+          style={{ perspective: '800px' }}
+        >
+          {/* Scan-line shimmer */}
+          <div className="relative">
+            <div className="smart-scan-line" />
 
-              {/* Main Headline */}
-              <h1 className="text-[2.55rem] font-extrabold leading-[1.08] tracking-[-0.04em] text-[#071E46] dark:text-white sm:text-5xl lg:text-[58px]">
-                Technology That <br />
-                Makes Business <br />
-                <span className="text-[#0066FF] dark:text-primary-electric">Smarter.</span>
-              </h1>
+            {/* 3D rotating container */}
+            <div className="animate-smart-3d flex items-center">
+              {/* Each letter with individual glow animation */}
+              {[
+                { char: 'S', cls: 'smart-letter-s' },
+                { char: 'M', cls: 'smart-letter-m' },
+                { char: 'A', cls: 'smart-letter-a' },
+                { char: 'R', cls: 'smart-letter-r' },
+                { char: 'T', cls: 'smart-letter-t' },
+              ].map(({ char, cls }) => (
+                <span
+                  key={char}
+                  className={`${cls} animate-stroke-cycle`}
+                  style={{
+                    fontSize: 'clamp(80px, 22vw, 260px)',
+                    fontWeight: 900,
+                    letterSpacing: '-0.04em',
+                    lineHeight: 1,
+                    color: 'transparent',
+                    WebkitTextStroke: '2px rgba(29,78,216,0.10)',
+                    display: 'inline-block',
+                    transformStyle: 'preserve-3d',
+                  }}
+                >
+                  {char}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
 
-              {/* Subtitle */}
-              <p className="max-w-xl text-sm leading-relaxed text-[#4A5E78] dark:text-[#C3D4EB] sm:text-base">
-                SMART Pvt Ltd is a technology and business solutions company providing software development, ERP & POS systems, website & mobile app development, along with accounting, tax and audit services — all under one roof.
-              </p>
+        {/* Blue radial glow blobs */}
+        <div className="pointer-events-none absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full bg-[#1D4ED8]/5 blur-3xl" />
+        <div className="pointer-events-none absolute top-1/3 right-10 w-48 h-48 rounded-full bg-[#60A5FA]/8 blur-2xl" />
+        <div className="pointer-events-none absolute bottom-10 left-10 w-32 h-32 rounded-full bg-[#1D4ED8]/6 blur-2xl" />
 
-              {/* CTA Action Buttons */}
-              <div className="flex flex-wrap items-center gap-3.5 pt-1">
+        <div className="relative z-10 flex-1 flex flex-col">
+          <div className="mx-auto w-full max-w-[1200px] px-4 sm:px-6 lg:px-8">
+
+            {/* Top: Left pill CTA + Center logo + Right pill CTA */}
+            <div className="relative flex items-center justify-between pt-8 pb-4">
+
+              {/* Left — Schedule pill */}
+              <div className="flex items-center gap-4">
                 <button
                   onClick={() => onOpenClientRequest()}
-                  className="px-6 py-3.5 rounded-full text-xs sm:text-sm font-bold text-white bg-[#0066FF] hover:bg-[#0052CC] shadow-lg shadow-blue-500/25 transition-all transform hover:-translate-y-0.5 active:translate-y-0 flex items-center gap-2"
+                  className="btn-pink inline-flex items-center gap-2 px-5 py-3 text-xs sm:text-sm"
                 >
-                  Get Started <ArrowRight className="w-4 h-4" />
+                  <span className="w-4 h-4 rounded-sm bg-white/25 flex items-center justify-center text-[10px]">📅</span>
+                  Schedule a Free Consultation
                 </button>
+                {/* Dot-line decoration */}
+                <div className="hidden sm:flex items-center gap-2">
+                  <div className="w-10 h-px bg-[#1D4ED8]/40" />
+                  <div className="w-2 h-2 rounded-full bg-[#1D4ED8]/60" />
+                </div>
+              </div>
 
+              {/* Right — Request proposal pill */}
+              <div className="flex items-center gap-4">
+                <div className="hidden sm:flex items-center gap-2">
+                  <div className="w-2 h-2 rounded-full bg-[#1D4ED8]/60" />
+                  <div className="w-10 h-px bg-[#1D4ED8]/40" />
+                </div>
                 <button
-                  onClick={() => setIsVideoOpen(true)}
-                  className="px-5 py-3.5 rounded-full text-xs sm:text-sm font-bold text-[#0A1E3F] dark:text-white bg-white dark:bg-navy-800 hover:bg-[#F4F8FC] border border-[#DCE6F2] dark:border-surface-border shadow-xs transition-all flex items-center gap-2"
+                  onClick={() => onOpenQuote()}
+                  className="btn-pink-outline inline-flex items-center gap-2 px-5 py-3 text-xs sm:text-sm"
                 >
-                  <div className="w-5 h-5 rounded-full bg-[#0066FF] flex items-center justify-center text-white">
-                    <Play className="w-2.5 h-2.5 fill-white ml-0.5" />
-                  </div>
-                  Watch Video
+                  <span className="w-4 h-4 rounded-full border border-current flex items-center justify-center text-[9px]">+</span>
+                  Request a Proposal
                 </button>
               </div>
-
-              <div className="grid grid-cols-2 gap-2.5 pt-5 sm:grid-cols-4">
-                
-                {/* 1. Client Base */}
-                <div className="p-3.5 rounded-2xl bg-white/95 dark:bg-navy-900/90 backdrop-blur-md border border-[#E2EAF4] dark:border-surface-border shadow-sm flex flex-col items-center justify-center text-center">
-                  <div className="w-7 h-7 rounded-full bg-[#EBF3FC] dark:bg-primary/20 flex items-center justify-center text-[#0066FF] dark:text-primary-cyan mb-1.5">
-                    <Users className="w-3.5 h-3.5" />
-                  </div>
-                  <span className="text-sm font-black text-[#0066FF] dark:text-primary-cyan block leading-none">
-                    Multi-Industry
-                  </span>
-                  <span className="text-[13px] font-semibold text-[#5B6E88] dark:text-text-muted block mt-1">
-                    Client Base
-                  </span>
-                </div>
-
-                {/* 2. Project Delivery */}
-                <div className="p-3.5 rounded-2xl bg-white/95 dark:bg-navy-900/90 backdrop-blur-md border border-[#E2EAF4] dark:border-surface-border shadow-sm flex flex-col items-center justify-center text-center">
-                  <div className="w-7 h-7 rounded-full bg-[#EBF3FC] dark:bg-primary/20 flex items-center justify-center text-[#0066FF] dark:text-primary-cyan mb-1.5">
-                    <FileText className="w-3.5 h-3.5" />
-                  </div>
-                  <span className="text-sm font-black text-[#0066FF] dark:text-primary-cyan block leading-none">
-                    End-to-End
-                  </span>
-                  <span className="text-[13px] font-semibold text-[#5B6E88] dark:text-text-muted block mt-1">
-                    Project Delivery
-                  </span>
-                </div>
-
-                {/* 3. Ongoing Support */}
-                <div className="p-3.5 rounded-2xl bg-white/95 dark:bg-navy-900/90 backdrop-blur-md border border-[#E2EAF4] dark:border-surface-border shadow-sm flex flex-col items-center justify-center text-center">
-                  <div className="w-7 h-7 rounded-full bg-[#EBF3FC] dark:bg-primary/20 flex items-center justify-center text-[#0066FF] dark:text-primary-cyan mb-1.5">
-                    <Award className="w-3.5 h-3.5" />
-                  </div>
-                  <span className="text-sm font-black text-[#0066FF] dark:text-primary-cyan block leading-none">
-                    Dedicated
-                  </span>
-                  <span className="text-[13px] font-semibold text-[#5B6E88] dark:text-text-muted block mt-1">
-                    Ongoing Support
-                  </span>
-                </div>
-
-                {/* 4. Branch Locations */}
-                <div className="p-3.5 rounded-2xl bg-white/95 dark:bg-navy-900/90 backdrop-blur-md border border-[#E2EAF4] dark:border-surface-border shadow-sm flex flex-col items-center justify-center text-center">
-                  <div className="w-7 h-7 rounded-full bg-[#EBF3FC] dark:bg-primary/20 flex items-center justify-center text-[#0066FF] dark:text-primary-cyan mb-1.5">
-                    <MapPin className="w-3.5 h-3.5" />
-                  </div>
-                  <span className="text-xl font-black text-[#0066FF] dark:text-primary-cyan block leading-none">
-                    3
-                  </span>
-                  <span className="text-[13px] font-semibold text-[#5B6E88] dark:text-text-muted block mt-1">
-                    Branch Locations
-                  </span>
-                </div>
-
-              </div>
-
             </div>
 
-            {/* Corporate headquarters showcase */}
-            <div className="relative mx-auto w-full max-w-[660px] lg:col-span-6 lg:max-w-none">
-              <div className="relative aspect-[1.18/1] overflow-hidden rounded-[2rem] border border-[#B9D9FA] bg-[#DDEFFF] shadow-[0_22px_55px_rgba(37,104,176,.22)]">
-                <img
-                  src="/images/SMART-BANNER-BG.webp"
-                  alt="SMART Pvt Ltd corporate headquarters"
-                  width="660"
-                  height="559"
-                  loading="eager"
-                  fetchpriority="high"
-                  className="absolute inset-0 h-full w-full scale-[1.15] object-cover object-[72%_50%]"
-                />
-                <div className="absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-[#061D46]/90 via-[#061D46]/20 to-transparent" />
-
-                <div className="absolute bottom-5 left-5 text-white sm:bottom-7 sm:left-7">
-                  <div className="mb-2 inline-flex items-center gap-2 rounded-full bg-[#086DFF] px-3 py-1.5 text-[12px] font-bold tracking-wide shadow-lg sm:text-xs">
-                    <MapPin className="h-3.5 w-3.5 fill-white" /> CORPORATE HEADQUARTERS
-                  </div>
-                  <p className="text-base font-bold sm:text-lg">SMART [PVT] LTD Commercial Center</p>
-                  <p className="text-xs text-blue-100 sm:text-sm">Colombo, Sri Lanka</p>
+            {/* Center — Floating logo circle */}
+            <div className="flex justify-center py-4 sm:py-6">
+              <div className="animate-float relative">
+                <div className="absolute inset-0 rounded-full bg-[#1D4ED8]/12 blur-2xl scale-125" />
+                <div className="relative w-36 h-36 sm:w-44 sm:h-44 rounded-full bg-[#EFF6FF] dark:bg-[#0D1F4A] border border-[#BFDBFE] dark:border-[#172554] shadow-2xl flex items-center justify-center">
+                  <img
+                    src={isDark ? company.logos.darkMode : company.logos.lightMode}
+                    alt="SMART [PVT] LTD"
+                    className="w-28 sm:w-36 h-auto object-contain"
+                  />
                 </div>
-
-                <div className="absolute left-5 top-5 hidden items-center gap-3 rounded-[1.5rem] bg-white/90 p-3 pr-5 shadow-lg backdrop-blur-md sm:flex">
-                  <img src="/logos/SMART_LOGO_ONLY_HEAD_CMP.png" alt="SMART" className="h-14 w-14 object-contain" />
-                  <div>
-                    <p className="text-sm font-bold text-[#0A1E3F]">Your Growth.</p>
-                    <p className="text-sm font-bold text-[#0A1E3F]">Our Technology.</p>
-                    <span className="mt-2 block h-1.5 w-11 rounded-full bg-[#086DFF]" />
-                  </div>
-                </div>
-              </div>
-
-              <div className="absolute -right-12 bottom-12 hidden w-[200px] rounded-[1.4rem] border border-white/80 bg-white/95 p-5 shadow-[0_16px_35px_rgba(13,58,116,.2)] backdrop-blur-md xl:block">
-                <p className="text-base font-extrabold leading-tight text-[#0A1E3F]">One Partner.<br />Complete Solutions.</p>
-                <span className="my-3 block h-1 w-10 rounded-full bg-[#086DFF]" />
-                <ul className="space-y-2 text-xs font-medium text-[#314B70]">
-                  {['Software Development', 'Accounting & Tax Services', 'Audit & Assurance', 'Business Advisory'].map((item) => (
-                    <li key={item} className="flex items-center gap-2"><Check className="h-4 w-4 rounded-full bg-[#086DFF] p-0.5 text-white" />{item}</li>
-                  ))}
-                </ul>
               </div>
             </div>
-
           </div>
 
+          {/* Bottom — Headline + subtitle + stats */}
+          <div className="mx-auto w-full max-w-[1200px] px-4 sm:px-6 lg:px-8 pb-14 pt-2">
+            <div className="max-w-2xl">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#0A1E3F] dark:text-white leading-[1.05] tracking-tight">
+                Let's Build Professional &{' '}
+                <span className="text-[#1D4ED8] dark:text-[#60A5FA]">High Converting Software</span>
+              </h1>
+              <p className="mt-5 text-sm sm:text-base text-[#2D4A8A] dark:text-[#93C5FD] leading-relaxed max-w-xl">
+                We are an agency that helps businesses grow online through our expertise and creativity in software, design, development, AI, and accounting solutions.
+              </p>
+
+              {/* Bold stat counters */}
+              <div className="mt-8 flex flex-wrap gap-8">
+                {[
+                  { value: "50+", label: "Projects Completed" },
+                  { value: "30+", label: "Clients Worldwide" },
+                  { value: "6+",  label: "Years of Experience" },
+                  { value: "3",   label: "Branch Locations" },
+                ].map((stat, i) => (
+                  <div key={i}>
+                    <p className="text-3xl sm:text-4xl font-extrabold text-[#1D4ED8] dark:text-[#60A5FA] leading-none">
+                      {stat.value}
+                    </p>
+                    <p className="text-xs font-semibold text-[#2D4A8A] dark:text-[#93C5FD] mt-1">
+                      {stat.label}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -325,131 +309,106 @@ export default function HomePage({ onOpenQuote, onOpenClientRequest }) {
         </div>
       </section>
 
-      {/* =========================================================================
-          3. ABOUT SMART PVT LTD
+            {/* =========================================================================
+          3. ABOUT SMART PVT LTD â€” image hero + floating stats + animated cards
          ========================================================================= */}
-      <section className="py-16 lg:py-20 bg-[#F4F8FC] dark:bg-midnight">
+      <section className="py-16 lg:py-20 bg-[#EFF6FF] dark:bg-[#06112B] overflow-hidden">
         <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
-          
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
-            
-            {/* Left: About Text & 4 Checkpoints */}
-            <div className="lg:col-span-5 space-y-5 flex flex-col justify-between text-left">
-              <div>
-                <span className="text-[13px] font-extrabold uppercase tracking-wider text-[#0066FF] dark:text-primary-cyan">
-                  ABOUT SMART PVT LTD
-                </span>
-                <h2 className="text-2xl sm:text-3xl lg:text-[34px] font-extrabold text-[#0A1E3F] dark:text-white tracking-tight mt-1 leading-tight">
-                  Your Trusted Partner for <br />
-                  Technology & <span className="text-[#0066FF]">Business Growth</span>
-                </h2>
-                <p className="text-xs sm:text-sm text-[#5B6E88] dark:text-text-muted mt-3 leading-relaxed">
-                  We combine technology, financial expertise and industry knowledge to deliver reliable, innovative and scalable solutions for businesses of all sizes. Our goal is to help you operate smarter, grow faster and achieve long-term success.
-                </p>
 
-                {/* 4 Checkpoints Grid */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-4">
-                  {[
-                    "Experienced & professional team",
-                    "Modern technology & secure systems",
-                    "Trusted across multiple industries",
-                    "End-to-end business solutions"
-                  ].map((item, idx) => (
-                    <div key={idx} className="flex items-start gap-2 text-xs font-semibold text-[#0A1E3F] dark:text-text-light">
-                      <CheckCircle2 className="w-4 h-4 text-[#0066FF] dark:text-primary-cyan shrink-0 mt-0.5" />
-                      <span>{item}</span>
-                    </div>
+          <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#1D4ED8] dark:text-[#60A5FA] mb-3">
+            About SMART PVT LTD
+          </p>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+
+            {/* LEFT - headline + animated checklist + CTA */}
+            <div className="space-y-6">
+              <h2 className="text-3xl sm:text-4xl lg:text-[2.8rem] font-extrabold text-[#0A1E3F] dark:text-white leading-[1.08] tracking-tight">
+                Your Trusted Partner for <br />
+                Technology &{' '}
+                <span className="text-[#1D4ED8] dark:text-[#60A5FA]">Business Growth</span>
+              </h2>
+              <p className="text-sm text-[#2D4A8A] dark:text-[#93C5FD] leading-relaxed max-w-lg">
+                We combine technology, financial expertise and industry knowledge to deliver reliable, innovative and scalable solutions for businesses of all sizes.
+              </p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                {[
+                  "Experienced & professional team",
+                  "Modern technology & secure systems",
+                  "Trusted across multiple industries",
+                  "End-to-end business solutions",
+                ].map((item, idx) => (
+                  <div
+                    key={idx}
+                    className="highlight-card group flex items-center gap-3 p-3.5 rounded-xl bg-white dark:bg-[#0D1F4A] border border-[#BFDBFE] dark:border-[#172554] hover:border-[#1D4ED8] dark:hover:border-[#60A5FA] hover:shadow-md hover:shadow-blue-500/10 transition-all duration-300"
+                  >
+                    <span className="w-7 h-7 rounded-full bg-[#EFF6FF] dark:bg-[#1D4ED8]/20 flex items-center justify-center shrink-0 group-hover:bg-[#1D4ED8] transition-all duration-300">
+                      <CheckCircle2 className="w-4 h-4 text-[#1D4ED8] dark:text-[#60A5FA] group-hover:text-white transition-colors duration-300" />
+                    </span>
+                    <span className="text-xs font-semibold text-[#0A1E3F] dark:text-white group-hover:text-[#1D4ED8] dark:group-hover:text-[#60A5FA] transition-colors duration-300">{item}</span>
+                  </div>
+                ))}
+              </div>
+              <Link to="/about" className="btn-pink inline-flex items-center gap-2 px-6 py-3 text-sm">
+                Learn More About Us <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+
+            {/* RIGHT - image + floating stat cards + mini cards */}
+            <div className="relative">
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl shadow-blue-500/15 border border-[#BFDBFE] dark:border-[#172554] group">
+                <img
+                  src="/images/team_collaboration.webp"
+                  alt="SMART Team collaboration"
+                  loading="lazy"
+                  className="w-full h-64 sm:h-80 object-cover group-hover:scale-105 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#06112B]/80 via-[#06112B]/10 to-transparent" />
+                <div className="absolute bottom-4 left-4 right-4 p-4 rounded-2xl bg-white/95 dark:bg-[#0D1F4A]/95 backdrop-blur-md shadow-xl border border-[#BFDBFE] dark:border-[#172554] text-center">
+                  <p className="text-xs font-bold text-[#0A1E3F] dark:text-white italic">
+                    "People + Technology = A Smarter Tomorrow"
+                  </p>
+                  <span className="text-[11px] font-bold text-[#1D4ED8] dark:text-[#60A5FA] mt-0.5 block">â€” SMART Pvt Ltd</span>
+                </div>
+              </div>
+              <div className="animate-slide-in-1 absolute -top-5 -right-3 sm:-right-6 bg-white dark:bg-[#0D1F4A] rounded-2xl p-4 shadow-xl border border-[#BFDBFE] dark:border-[#172554] min-w-[120px] hover:-translate-y-1 hover:shadow-blue-500/20 transition-all duration-300">
+                <p className="text-2xl font-extrabold text-[#1D4ED8] dark:text-[#60A5FA] leading-none">50+</p>
+                <p className="text-[10px] font-semibold text-[#2D4A8A] dark:text-[#93C5FD] mt-1">Projects Delivered</p>
+                <div className="mt-2 flex gap-0.5">
+                  {[...Array(5)].map((_, i) => (
+                    <div key={i} className="h-1 flex-1 rounded-full bg-[#1D4ED8]" style={{ opacity: 0.15 + i * 0.18 }} />
                   ))}
                 </div>
               </div>
-
-              <div className="pt-2">
-                <Link
-                  to="/about"
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-bold text-white bg-[#0066FF] hover:bg-[#0052CC] shadow-md shadow-blue-500/20 transition-all"
-                >
-                  Learn More About Us <ArrowRight className="w-3.5 h-3.5" />
-                </Link>
-              </div>
-            </div>
-
-            {/* Center: Team Picture with Quote Overlay */}
-            <div className="lg:col-span-4 rounded-3xl overflow-hidden shadow-xl border border-[#E2EAF4] dark:border-surface-border relative group min-h-[320px]">
-              <img
-                src="/images/team_collaboration.webp"
-                alt="SMART Team collaboration"
-                loading="lazy"
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#06112B]/90 via-[#06112B]/20 to-transparent" />
-              
-              {/* Quote Card Overlay */}
-              <div className="absolute bottom-4 left-4 right-4 p-3.5 rounded-2xl bg-white/95 dark:bg-navy-900/95 backdrop-blur-md shadow-lg border border-[#DCE6F2] dark:border-surface-border text-center">
-                <p className="text-xs font-bold text-[#0A1E3F] dark:text-white italic">
-                  “People + Technology = A Smarter Tomorrow”
-                </p>
-                <span className="text-[12px] font-bold text-[#0066FF] dark:text-primary-cyan mt-0.5 block">
-                  — SMART Pvt Ltd
-                </span>
-              </div>
-            </div>
-
-            {/* Right: Mission, Vision, Values 3-Cards */}
-            <div className="lg:col-span-3 space-y-3 flex flex-col justify-between text-left">
-              
-              {/* Mission */}
-              <div className="p-4 rounded-2xl bg-white dark:bg-navy-800/80 border border-[#E2EAF4] dark:border-surface-border shadow-xs hover:border-[#0066FF]/40 transition-colors">
-                <div className="flex items-center gap-2 mb-1.5">
-                  <div className="p-1.5 rounded-lg bg-[#EBF3FC] text-[#0066FF] dark:bg-primary/20 dark:text-primary-cyan">
-                    <Users className="w-4 h-4" />
-                  </div>
-                  <h4 className="text-xs font-extrabold text-[#0A1E3F] dark:text-white uppercase tracking-wider">
-                    Our Mission
-                  </h4>
+              <div className="animate-slide-in-2 absolute -bottom-5 -left-3 sm:-left-6 bg-white dark:bg-[#0D1F4A] rounded-2xl p-4 shadow-xl border border-[#BFDBFE] dark:border-[#172554] min-w-[120px] hover:-translate-y-1 hover:shadow-blue-500/20 transition-all duration-300">
+                <p className="text-2xl font-extrabold text-[#1D4ED8] dark:text-[#60A5FA] leading-none">3</p>
+                <p className="text-[10px] font-semibold text-[#2D4A8A] dark:text-[#93C5FD] mt-1">Branch Locations</p>
+                <div className="mt-2 flex items-center gap-1">
+                  <span className="w-2 h-2 rounded-full bg-[#1D4ED8] animate-pulse" />
+                  <span className="text-[9px] text-[#1D4ED8] dark:text-[#60A5FA] font-semibold">Sri Lanka</span>
                 </div>
-                <p className="text-xs text-[#5B6E88] dark:text-text-muted leading-relaxed">
-                  To empower businesses with technology and professional services for a smarter future.
-                </p>
               </div>
-
-              {/* Vision */}
-              <div className="p-4 rounded-2xl bg-white dark:bg-navy-800/80 border border-[#E2EAF4] dark:border-surface-border shadow-xs hover:border-[#0066FF]/40 transition-colors">
-                <div className="flex items-center gap-2 mb-1.5">
-                  <div className="p-1.5 rounded-lg bg-[#EBF3FC] text-[#0066FF] dark:bg-primary/20 dark:text-primary-cyan">
-                    <Globe className="w-4 h-4" />
+              <div className="grid grid-cols-3 gap-2 mt-8">
+                {[
+                  { icon: Users, label: 'Mission', text: 'Empower businesses for a smarter future.' },
+                  { icon: Globe, label: 'Vision',  text: 'Most trusted solutions provider.' },
+                  { icon: Award, label: 'Values',  text: 'Integrity, Innovation, Success.' },
+                ].map(({ icon: Icon, label, text }) => (
+                  <div key={label} className="highlight-card group p-3 rounded-xl bg-white dark:bg-[#0D1F4A] border border-[#BFDBFE] dark:border-[#172554] hover:border-[#1D4ED8] dark:hover:border-[#60A5FA] hover:shadow-md hover:shadow-blue-500/10 transition-all duration-300 text-center">
+                    <div className="mx-auto mb-1.5 w-7 h-7 rounded-lg bg-[#EFF6FF] dark:bg-[#1D4ED8]/15 flex items-center justify-center text-[#1D4ED8] dark:text-[#60A5FA] group-hover:bg-[#1D4ED8] group-hover:text-white transition-all duration-300">
+                      <Icon className="w-3.5 h-3.5" />
+                    </div>
+                    <p className="text-[10px] font-extrabold text-[#0A1E3F] dark:text-white uppercase tracking-wider group-hover:text-[#1D4ED8] dark:group-hover:text-[#60A5FA] transition-colors">{label}</p>
+                    <p className="text-[9px] text-[#2D4A8A] dark:text-[#93C5FD] mt-0.5 leading-snug line-clamp-2">{text}</p>
                   </div>
-                  <h4 className="text-xs font-extrabold text-[#0A1E3F] dark:text-white uppercase tracking-wider">
-                    Our Vision
-                  </h4>
-                </div>
-                <p className="text-xs text-[#5B6E88] dark:text-text-muted leading-relaxed">
-                  To be the most trusted and innovative business solutions provider in Sri Lanka and beyond.
-                </p>
+                ))}
               </div>
-
-              {/* Values */}
-              <div className="p-4 rounded-2xl bg-white dark:bg-navy-800/80 border border-[#E2EAF4] dark:border-surface-border shadow-xs hover:border-[#0066FF]/40 transition-colors">
-                <div className="flex items-center gap-2 mb-1.5">
-                  <div className="p-1.5 rounded-lg bg-[#EBF3FC] text-[#0066FF] dark:bg-primary/20 dark:text-primary-cyan">
-                    <Award className="w-4 h-4" />
-                  </div>
-                  <h4 className="text-xs font-extrabold text-[#0A1E3F] dark:text-white uppercase tracking-wider">
-                    Our Values
-                  </h4>
-                </div>
-                <p className="text-xs text-[#5B6E88] dark:text-text-muted leading-relaxed">
-                  Integrity, Innovation, Client Success, Continuous Improvement.
-                </p>
-              </div>
-
             </div>
 
           </div>
-
         </div>
       </section>
-
-      {/* =========================================================================
+{/* =========================================================================
           4. OUR PRODUCT: SMART ERP with POS (Royal Blue Gradient Banner)
          ========================================================================= */}
       <section className="py-16 bg-gradient-to-br from-[#0A2540] via-[#06112B] to-[#0A1838] text-white relative overflow-hidden border-y border-[#20345D]">
@@ -743,7 +702,7 @@ export default function HomePage({ onOpenQuote, onOpenClientRequest }) {
               </div>
             </div>
 
-            {/* Center 6 Cols: Featured Projects: Real Projects. Real Results. */}
+            {/* Center 6 Cols: Featured Projects — Codezela image-forward style */}
             <div className="lg:col-span-6 space-y-4 text-left">
               <div className="flex items-center justify-between">
                 <div>
@@ -754,36 +713,45 @@ export default function HomePage({ onOpenQuote, onOpenClientRequest }) {
                     Real Projects. Real Results.
                   </h3>
                 </div>
-                <Link to="/projects" className="text-[13px] font-bold text-[#0066FF] hover:underline">
-                  View All Projects →
+                <Link to="/projects" className="text-[13px] font-bold text-[#0066FF] hover:underline flex items-center gap-1">
+                  View All <ArrowRight className="w-3.5 h-3.5" />
                 </Link>
               </div>
 
-              {/* 4 Project Cards Grid with UI Screenshots */}
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+              {/* 2×2 Codezela-style image cards — taller, category overlay */}
+              <div className="grid grid-cols-2 gap-3">
                 {featuredProjects.map((proj, idx) => (
                   <Link
                     key={idx}
                     to={`/projects/${proj.slug}`}
-                    className="smart-card rounded-2xl overflow-hidden group text-left flex flex-col justify-between"
+                    className="group relative overflow-hidden rounded-2xl border border-[#E2EAF4] dark:border-[#1C3454] bg-white dark:bg-[#0D1F3C] shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col"
                   >
-                    <div>
-                      <div className="h-24 overflow-hidden relative">
-                        <img
-                          src={proj.image}
-                          alt={proj.name}
-                          loading="lazy"
-                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                        />
-                      </div>
-                      <div className="p-2.5">
-                        <h4 className="text-[13px] font-bold text-[#0A1E3F] dark:text-white group-hover:text-[#0066FF] line-clamp-1">
-                          {proj.name}
-                        </h4>
-                        <span className="text-[13px] text-[#5B6E88] dark:text-text-muted block">
-                          {proj.category}
-                        </span>
-                      </div>
+                    {/* Cover image */}
+                    <div className="relative h-36 overflow-hidden">
+                      <img
+                        src={proj.image}
+                        alt={proj.name}
+                        loading="lazy"
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/55 to-transparent" />
+                      {/* Category pill — bottom left over image */}
+                      <span className="absolute bottom-2 left-2 px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wide bg-[#0066FF] text-white shadow">
+                        {proj.category}
+                      </span>
+                      {/* Hover arrow — bottom right */}
+                      <span className="absolute bottom-2 right-2 w-6 h-6 rounded-full bg-white flex items-center justify-center opacity-0 translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 shadow">
+                        <ArrowRight className="w-3 h-3 text-[#0066FF]" />
+                      </span>
+                    </div>
+                    {/* Text */}
+                    <div className="p-3">
+                      <h4 className="text-[13px] font-bold text-[#0A1E3F] dark:text-white group-hover:text-[#0066FF] dark:group-hover:text-[#5BA4FF] line-clamp-2 leading-snug transition-colors">
+                        {proj.name}
+                      </h4>
+                      <span className="text-[11px] text-[#5B6E88] dark:text-[#8DA4C4] mt-0.5 block">
+                        {proj.category}
+                      </span>
                     </div>
                   </Link>
                 ))}

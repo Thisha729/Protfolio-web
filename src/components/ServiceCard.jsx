@@ -18,7 +18,7 @@ export default function ServiceCard({ service, onOpenQuote }) {
       case 'Sparkles': return <Sparkles className="w-6 h-6 text-amber-600 dark:text-amber-400" />;
       case 'Calculator': return <Calculator className="w-6 h-6 text-emerald-600 dark:text-emerald-400" />;
       case 'FileCheck': return <FileCheck className="w-6 h-6 text-blue-600 dark:text-blue-400" />;
-      case 'ShieldCheck': return <ShieldCheck className="w-6 h-6 text-purple-600 dark:text-purple-400" />;
+      case 'ShieldCheck': return <ShieldCheck className="w-6 h-6 text-purple-600 dark:text-blue-400" />;
       default: return <Globe className="w-6 h-6 text-primary dark:text-primary-cyan" />;
     }
   };
