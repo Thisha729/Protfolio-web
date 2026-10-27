@@ -113,7 +113,7 @@ export const getActiveStaff   = ()    => staffList.filter(s => s.status !== 'on-
 export const getStaffByIds    = (ids) => ids.map(id => getStaffById(id)).filter(Boolean);
 
 export const STATUS_COLORS = {
-  'active':   'bg-green-100 text-green-700 border-green-200 dark:bg-green-500/15 dark:text-green-300 dark:border-green-500/30',
+  'active':   'bg-blue-100 text-green-700 border-blue-200 dark:bg-blue-600/15 dark:text-green-300 dark:border-blue-600/30',
   'busy':     'bg-amber-100 text-amber-700 border-amber-200 dark:bg-amber-500/15 dark:text-amber-300 dark:border-amber-500/30',
   'on-leave': 'bg-slate-100 text-slate-600 border-slate-200 dark:bg-slate-500/15 dark:text-slate-300 dark:border-slate-500/30',
 };

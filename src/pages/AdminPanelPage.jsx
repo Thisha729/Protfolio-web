@@ -19,7 +19,7 @@ import {
 const Badge = ({ status }) => {
   const map = {
     'New':      'bg-blue-100  text-blue-700  border-blue-200  dark:bg-blue-500/15  dark:text-blue-300  dark:border-blue-500/30',
-    'Accepted': 'bg-green-100 text-green-700 border-green-200 dark:bg-green-500/15 dark:text-green-300 dark:border-green-500/30',
+    'Accepted': 'bg-blue-100 text-green-700 border-blue-200 dark:bg-blue-600/15 dark:text-green-300 dark:border-blue-600/30',
     'Rejected': 'bg-red-100   text-red-700   border-red-200   dark:bg-red-500/15   dark:text-red-300   dark:border-red-500/30',
     'Pending':  'bg-amber-100 text-amber-700 border-amber-200 dark:bg-amber-500/15 dark:text-amber-300 dark:border-amber-500/30',
   };
@@ -489,7 +489,7 @@ You can track your project progress, invoices and support tickets from your dash
                       'quotation_accepted':   'bg-violet-100 text-violet-700 border-violet-200 dark:bg-violet-500/15 dark:text-violet-300 dark:border-violet-500/30',
                       'advance_paid':         'bg-emerald-100 text-emerald-700 border-emerald-200 dark:bg-emerald-500/15 dark:text-emerald-300 dark:border-emerald-500/30',
                       'In Progress':          'bg-blue-100 text-blue-700 border-blue-200 dark:bg-blue-500/15 dark:text-blue-300 dark:border-blue-500/30',
-                      'Completed':            'bg-green-100 text-green-700 border-green-200 dark:bg-green-500/15 dark:text-green-300 dark:border-green-500/30',
+                      'Completed':            'bg-blue-100 text-green-700 border-blue-200 dark:bg-blue-600/15 dark:text-green-300 dark:border-blue-600/30',
                     };
                     const statusLabel = {
                       'requirements_pending': 'Requirements Pending',
@@ -658,7 +658,7 @@ You can track your project progress, invoices and support tickets from your dash
                           <h3 className="text-sm font-bold text-[#0A1E3F] dark:text-white mt-0.5">{c.name}</h3>
                           <p className="text-xs text-[#5B6E88] dark:text-text-muted">{c.company}</p>
                         </div>
-                        <span className="text-[12px] font-bold px-2 py-0.5 rounded-full bg-green-100 dark:bg-green-500/15 text-green-700 dark:text-green-300 border border-green-200 dark:border-green-500/30">
+                        <span className="text-[12px] font-bold px-2 py-0.5 rounded-full bg-blue-100 dark:bg-blue-600/15 text-green-700 dark:text-green-300 border border-blue-200 dark:border-blue-600/30">
                           Active
                         </span>
                       </div>

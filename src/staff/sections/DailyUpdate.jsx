@@ -307,10 +307,10 @@ export default function DailyUpdate() {
             .meta-val { width: 35%; font-weight: 600; }
             .time-th { background: #E2E8F0; font-weight: 700; text-align: center; color: #0F172A; }
             .time-td { text-align: center; font-weight: 700; background: #F8FAFC; }
-            .total-td { background: #E8F5E9; color: #166534; font-weight: 800; font-size: 13px; text-align: center; }
+            .total-td { background: #E8F5E9; color: #1E3A8A; font-weight: 800; font-size: 13px; text-align: center; }
             .task-th { background: #1B4D89; color: #fff; font-weight: 700; text-align: center; }
             .status-badge { display: inline-block; padding: 3px 8px; border-radius: 12px; font-size: 10px; font-weight: 700; }
-            .status-Completed { background: #DCFCE7; color: #15803D; }
+            .status-Completed { background: #DBEAFE; color: #1E40AF; }
             .status-InProgress { background: #FEF3C7; color: #B45309; }
             .remarks-box { padding: 10px 12px; background: #F8FAFC; border-top: 1px solid #CBD5E1; font-size: 12px; }
             @media print { body { padding: 0; } .no-print { display: none; } }

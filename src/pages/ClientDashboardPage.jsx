@@ -838,7 +838,7 @@ export default function ClientDashboardPage() {
                         {staff.map((s,i)=>(
                           <div key={s.id} title={s.name} style={{
                             width:24,height:24,borderRadius:'50%',
-                            background:`linear-gradient(135deg,${['#4F46E5','#7C3AED','#EC4899','#F59E0B'][i%4]},${['#7C3AED','#A78BFA','#F9A8D4','#FCD34D'][i%4]})`,
+                            background:`linear-gradient(135deg,${['#4F46E5','#7C3AED','#EC4899','#F59E0B'][i%4]},${['#7C3AED','#A78BFA','#93C5FD','#FCD34D'][i%4]})`,
                             border:'2px solid #1E293B',marginLeft:i>0?-6:0,
                             display:'flex',alignItems:'center',justifyContent:'center',
                             color:'#fff',fontSize:10,fontWeight:900,flexShrink:0,
@@ -1791,7 +1791,7 @@ export default function ClientDashboardPage() {
             </div>
             <div style={{flex:1}}>
               <div style={{fontSize:14,fontWeight:700,color:'#065F46'}}>WhatsApp Support</div>
-              <div style={{fontSize:12,color:'#6EE7B7',marginTop:1}}>Fastest — typically replies in minutes</div>
+              <div style={{fontSize:12,color:'#60A5FA',marginTop:1}}>Fastest — typically replies in minutes</div>
             </div>
             <ExternalLink size={14} style={{color:'#10B981',flexShrink:0}}/>
           </a>
@@ -2266,7 +2266,7 @@ export default function ClientDashboardPage() {
                 </div>
                 <div style={{textAlign:'right'}}>
                   <div style={{fontSize:10,fontWeight:800,color:'#64748B',textTransform:'uppercase',letterSpacing:'0.8px'}}>Payment Status</div>
-                  <div style={{fontSize:12,fontWeight:800,color:'#059669',marginTop:4,display:'inline-block',background:'#DCFCE7',padding:'3px 10px',borderRadius:6}}>
+                  <div style={{fontSize:12,fontWeight:800,color:'#059669',marginTop:4,display:'inline-block',background:'#DBEAFE',padding:'3px 10px',borderRadius:6}}>
                     VERIFIED & RECEIVED
                   </div>
                   {receiptModal.quotationNo && <div style={{fontSize:11,color:'#64748B',marginTop:4}}>Quote: {receiptModal.quotationNo}</div>}
